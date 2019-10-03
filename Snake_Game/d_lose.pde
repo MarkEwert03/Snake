@@ -1,0 +1,5 @@
+void lose() {
+}
+
+void loseMousedPressed() {
+}
