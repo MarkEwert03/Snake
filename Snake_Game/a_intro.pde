@@ -1,7 +1,9 @@
 void intro() {
   background(mint);
+  fill(white);
   text("Snake", width/2, height/2);
-}
+}// -----------------------------------------------------------------------------------------
 
-void introMousedPressed() {
-}
+void introMousePressed() {
+  mode = GAME;
+}// -----------------------------------------------------------------------------------------

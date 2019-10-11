@@ -1,28 +1,22 @@
-class Snake {
+class Tile {
   //1. Instance Variables
-  PVector direction;
-  int x, y, s, speed;
+  int x, y, s, g;
 
   //2. Constructor(s)
-  Snake() {
-    x = 50;
-    y = 50;
+  Tile(int _x, int _y) {
+    x = _x;
+    y = _y;
     s = 90;
-    speed = 4;
+    g = 0;
   }
 
   //3. Behavior functions
   void show() {
-    noStroke();
-    fill(lime);
+    rectMode(LEFT);
+    stroke(0);
+    fill(g);
     rect(x, y, s, s, 10);
-  }// -----------------------------------------------------------------------------------------
-
-  void act() {
-    if (wKey) y-= speed;
-    else if (aKey) x-= speed;
-    else if (sKey) y+= speed;
-    else if (dKey) x+= speed;
+    rectMode(CENTER);
   }// -----------------------------------------------------------------------------------------
   
 }// ---------------------------------------------------------------------------------------------------------------------------------------------------------------------
