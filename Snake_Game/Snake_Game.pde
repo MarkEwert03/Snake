@@ -38,6 +38,7 @@ ArrayList<Tile> tileList;
 // ------------------------------------------------------------------------------------------
 void setup() {
   //Basic
+  // Dimentions: x = 1440. y = 900.
   fullScreen();
   mode = INTRO;
 
@@ -50,9 +51,28 @@ void setup() {
 
   //Snake
   mySnake = new Snake();
-  
+
   //Tile
   tileList = new ArrayList<Tile>();
+  final int PIXELSIZE = 90;
+  int tileX = 45;
+  int tileY = 45;
+  for (int i = 0; i < 170; i++) {
+    //Adding Tiles
+    tileList.add( new Tile(tileX, tileY));
+    //Aligning Tiles
+    tileX += PIXELSIZE;
+    if (width+PIXELSIZE <= tileX) {
+      tileY += PIXELSIZE;
+      tileX = 45;
+    }
+    //Changing tile Color
+    for (int j = 0; j < tileList.size(); j++) {
+      Tile tempTile = tileList.get(i);
+      if (i % 2 == 0) tempTile.c = black;
+      else tempTile.c = white;
+    }
+  }
 }// -----------------------------------------------------------------------------------------
 
 void draw() {
@@ -77,19 +97,12 @@ void mousePressed() {
 }// -----------------------------------------------------------------------------------------
 
 void keyPressed() {
-  if (key == 'w' || keyCode == UP)    wKey = true;
-  if (key == 'a' || keyCode == LEFT)  aKey = true;
-  if (key == 's' || keyCode == DOWN)  sKey = true;
-  if (key == 'd' || keyCode == RIGHT) dKey = true;
+  if (key == 'w' || keyCode == UP )   mySnake.direction.set(0, -1);
+  if (key == 'a' || keyCode == LEFT)  mySnake.direction.set(-1, 0);
+  if (key == 's' || keyCode == DOWN)  mySnake.direction.set(0, 1);
+  if (key == 'd' || keyCode == RIGHT) mySnake.direction.set(1, 0);
   if (key == ' ') {
     if (mode == GAME) mode = PAUSE;
     else if (mode == PAUSE) mode = GAME;
   }
-}// -----------------------------------------------------------------------------------------
-
-void keyReleased() {
-  if (key == 'w' || keyCode == UP)    wKey = false;
-  if (key == 'a' || keyCode == LEFT)  aKey = false;
-  if (key == 's' || keyCode == DOWN)  sKey = false;
-  if (key == 'd' || keyCode == RIGHT) dKey = false;
 }// -----------------------------------------------------------------------------------------

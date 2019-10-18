@@ -1,22 +1,20 @@
 class Tile {
   //1. Instance Variables
-  int x, y, s, g;
+  int x, y, s;
+  color c;
 
   //2. Constructor(s)
   Tile(int _x, int _y) {
     x = _x;
     y = _y;
     s = 90;
-    g = 0;
   }
 
   //3. Behavior functions
   void show() {
-    rectMode(LEFT);
-    stroke(0);
-    fill(g);
-    rect(x, y, s, s, 10);
-    rectMode(CENTER);
+    noStroke();
+    fill(c);
+    rect(x, y, s, s);
   }// -----------------------------------------------------------------------------------------
   
 }// ---------------------------------------------------------------------------------------------------------------------------------------------------------------------

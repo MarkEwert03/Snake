@@ -6,6 +6,4 @@ void winMousePressed() {
   mode = INTRO;
   
   //Variable reset
-  mySnake.x = 50;
-  mySnake.y = 50;
 }// -----------------------------------------------------------------------------------------
