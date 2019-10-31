@@ -10,11 +10,6 @@ void game() {
   //Snake
   mySnake.show();
   mySnake.act();
-
-  if (wKey == true) aKey = sKey = dKey = false;
-  if (aKey == true) wKey = sKey = dKey = false;
-  if (sKey == true) wKey = aKey = dKey = false;
-  if (dKey == true) wKey = aKey = sKey = false;
   }// -----------------------------------------------------------------------------------------
 
   void gameMousePressed() {

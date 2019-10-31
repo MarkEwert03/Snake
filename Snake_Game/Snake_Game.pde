@@ -26,9 +26,6 @@ color black           = 0;
 color grey            = 127;
 color white           = 255;
 
-//Key Commands
-boolean wKey, aKey, sKey, dKey;
-
 //Snake
 Snake mySnake;
 
@@ -97,7 +94,9 @@ void mousePressed() {
 }// -----------------------------------------------------------------------------------------
 
 void keyPressed() {
-  if (key == 'w' || keyCode == UP )   mySnake.direction.set(0, -1);
+  if (key == 'w' || keyCode == UP ) {
+      mySnake.direction.set(0, -1);
+  }
   if (key == 'a' || keyCode == LEFT)  mySnake.direction.set(-1, 0);
   if (key == 's' || keyCode == DOWN)  mySnake.direction.set(0, 1);
   if (key == 'd' || keyCode == RIGHT) mySnake.direction.set(1, 0);

@@ -4,4 +4,7 @@ void lose() {
 
 void loseMousePressed() {
   mode = INTRO;
+  
+  //Variable reset
+  setup();
 }// -----------------------------------------------------------------------------------------
