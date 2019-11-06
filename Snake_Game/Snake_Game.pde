@@ -27,16 +27,18 @@ color grey            = 127;
 color white           = 255;
 
 //Snake
-Snake mySnake;
+ArrayList<Snake> snakeList;
+int t = 180;
 
 //Tiles
 ArrayList<Tile> tileList;
+final int TILESIZE = 10;
 
 // ------------------------------------------------------------------------------------------
 void setup() {
   //Basic
-  // Dimentions: x = 1440. y = 900.
-  fullScreen();
+  fullScreen(); // Dimentions: x = 1440, y = 900
+  frameRate(30);
   mode = INTRO;
 
   //Shapes
@@ -47,26 +49,26 @@ void setup() {
   textSize(240);
 
   //Snake
-  mySnake = new Snake();
+  snakeList = new ArrayList<Snake>();
+  snakeList.add( new Snake(135, 135));
 
   //Tile
   tileList = new ArrayList<Tile>();
-  final int PIXELSIZE = 90;
-  int tileX = 45;
-  int tileY = 45;
-  for (int i = 0; i < 170; i++) {
+  int tileX = TILESIZE/2;
+  int tileY = TILESIZE/2;
+  for (int i = 0; i < 2*(width/TILESIZE)*(height/TILESIZE); i++) {
     //Adding Tiles
     tileList.add( new Tile(tileX, tileY));
     //Aligning Tiles
-    tileX += PIXELSIZE;
-    if (width+PIXELSIZE <= tileX) {
-      tileY += PIXELSIZE;
-      tileX = 45;
+    tileX += TILESIZE;
+    if (width+TILESIZE <= tileX) {
+      tileY += TILESIZE;
+      tileX = TILESIZE/2;
     }
     //Changing tile Color
     for (int j = 0; j < tileList.size(); j++) {
       Tile tempTile = tileList.get(i);
-      if (i % 2 == 0) tempTile.c = black;
+      if (i % 2 == 0) tempTile.c = 225;
       else tempTile.c = white;
     }
   }
@@ -82,6 +84,8 @@ void draw() {
   else if (mode == LOSE)  lose();
   else if (mode == WIN)   win();
   else println("Error! Mode was " + mode);
+
+  print(snakeList.size());
 }// -----------------------------------------------------------------------------------------
 
 void mousePressed() {
@@ -94,14 +98,16 @@ void mousePressed() {
 }// -----------------------------------------------------------------------------------------
 
 void keyPressed() {
-  if (key == 'w' || keyCode == UP ) {
-      mySnake.direction.set(0, -1);
-  }
-  if (key == 'a' || keyCode == LEFT)  mySnake.direction.set(-1, 0);
-  if (key == 's' || keyCode == DOWN)  mySnake.direction.set(0, 1);
-  if (key == 'd' || keyCode == RIGHT) mySnake.direction.set(1, 0);
-  if (key == ' ') {
-    if (mode == GAME) mode = PAUSE;
-    else if (mode == PAUSE) mode = GAME;
+  for (int i = 0; i < snakeList.size(); i++) {
+    Snake tempSnake = snakeList.get(i);
+
+    if (key == 'w' || keyCode == UP )   tempSnake.dir = UP;
+    if (key == 'a' || keyCode == LEFT)  tempSnake.dir = LEFT;
+    if (key == 's' || keyCode == DOWN)  tempSnake.dir = DOWN;
+    if (key == 'd' || keyCode == RIGHT) tempSnake.dir = RIGHT;
+    if (key == ' ') {
+      if (mode == GAME) mode = PAUSE;
+      else if (mode == PAUSE) mode = GAME;
+    }
   }
 }// -----------------------------------------------------------------------------------------

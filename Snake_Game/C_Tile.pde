@@ -7,7 +7,7 @@ class Tile {
   Tile(int _x, int _y) {
     x = _x;
     y = _y;
-    s = 90;
+    s = TILESIZE;
   }
 
   //3. Behavior functions
