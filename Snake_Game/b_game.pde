@@ -8,11 +8,8 @@ void game() {
   }
 
   //Snake
-  for (int i = 0; i < snakeList.size(); i++) {
-    Snake tempSnake = snakeList.get(i);
-    tempSnake.show();
-    tempSnake.act();
-  }
+  mySnake.show();
+  mySnake.act();
   
 }// -----------------------------------------------------------------------------------------
 
