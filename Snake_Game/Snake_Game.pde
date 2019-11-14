@@ -26,14 +26,15 @@ color black           = 0;
 color grey            = 127;
 color white           = 255;
 
-//Snake
-Snake mySnake;
-int t = 180;
-final int frames = 5;
-
 //Tiles
 ArrayList<Tile> tileList;
 final int TILESIZE = 45;
+
+//Snake
+Snake mySnake;
+int snakeTimer = 60;
+final int frames = 5;
+final float ROUNDNESS = TILESIZE/5;
 
 // ------------------------------------------------------------------------------------------
 void setup() {

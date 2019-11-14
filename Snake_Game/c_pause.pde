@@ -4,10 +4,10 @@ void pause() {
     Tile tempTile = tileList.get(i);
     tempTile.show();
   }
-  
+
   mySnake.show();
-  
-   fill(grey, 125);
+
+  fill(red, 125);
   rect(width/2, height/2, width, height);
 }// -----------------------------------------------------------------------------------------
 

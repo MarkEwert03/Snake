@@ -8,10 +8,10 @@ class Tile {
     x = _x;
     y = _y;
     s = TILESIZE;
-    int x_index = x/TILESIZE;
-    int y_index = y/TILESIZE;
-    if ((x_index + y_index) % 2 == 0 ) c = white;
-    else c = black;
+    int xIndex = x/TILESIZE;
+    int yIndex = y/TILESIZE;
+    if ((xIndex + yIndex) % 2 == 0 ) c = white;
+    else c = grey;
   }
 
   //3. Behavior functions
