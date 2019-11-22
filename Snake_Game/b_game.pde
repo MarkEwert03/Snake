@@ -11,6 +11,8 @@ void game() {
   mySnake.show();
   mySnake.act();
   
+  //Cherry
+  myCherry.show();
 }// -----------------------------------------------------------------------------------------
 
 void gameMousePressed() {

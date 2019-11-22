@@ -7,9 +7,9 @@ class Tile {
   Tile(int _x, int _y) {
     x = _x;
     y = _y;
-    s = TILESIZE;
-    int xIndex = x/TILESIZE;
-    int yIndex = y/TILESIZE;
+    s = TS;
+    int xIndex = x/TS;
+    int yIndex = y/TS;
     if ((xIndex + yIndex) % 2 == 0 ) c = white;
     else c = grey;
   }

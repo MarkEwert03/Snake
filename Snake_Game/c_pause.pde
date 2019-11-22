@@ -5,10 +5,16 @@ void pause() {
     tempTile.show();
   }
 
+  //Snake
   mySnake.show();
 
-  fill(red, 125);
+  //Cherry
+  myCherry.show();
+
+  //Transparent tint
+  fill(blue, 125);
   rect(width/2, height/2, width, height);
+  
 }// -----------------------------------------------------------------------------------------
 
 void pauseMousePressed() {

@@ -14,7 +14,7 @@ color red             = #df2020;
 color orange          = #df8020;
 color yellow          = #dfdf20;
 color lime            = #80df20;
-color green            = #50df20;
+color green           = #50df20;
 color mint            = #20df50;
 color cyan            = #20dfdf;
 color blue            = #2080df;
@@ -22,51 +22,60 @@ color navy            = #2020df;
 color purple          = #8020df;
 color violet          = #df20df;
 color pink            = #df2080;
-color black           = 0;
-color grey            = 127;
-color white           = 255;
+color black           = #000000;
+color grey            = #808080;
+color white           = #ffffff;
 
 //Tiles
 ArrayList<Tile> tileList;
-final int TILESIZE = 45;
+final int TS = 30;
+float numberOfTiles;
 
 //Snake
 Snake mySnake;
-int snakeTimer = 60;
-final int frames = 5;
-final float ROUNDNESS = TILESIZE/5;
+final int FRAME = 5;
+final float ROUNDNESS = TS/5;
+
+Cherry myCherry;
 
 // ------------------------------------------------------------------------------------------
 void setup() {
   //Basic
   fullScreen(); // Dimentions: x = 1440, y = 900
-  frameRate(30);
+  numberOfTiles = (width/TS)*(height/TS);
+  print(numberOfTiles);
+  frameRate(1350/TS);
   mode = INTRO;
 
   //Shapes
+  colorMode(HSB, 1000, 1000, 1000, 1000);
+  loseAlpha = 0;
   rectMode(CENTER);
 
   //Text
   textAlign(CENTER, CENTER);
   textSize(240);
 
-  //Snake
-  mySnake = new Snake();
-
   //Tile
   tileList = new ArrayList<Tile>();
-  int tileX = TILESIZE/2;
-  int tileY = TILESIZE/2;
-  for (int i = 0; i < (width+1/TILESIZE)*(height/TILESIZE); i++) {
+  int tileX = TS/2;
+  int tileY = TS/2;
+  for (int i = 0; i < (width+1/TS)*(height/TS); i++) {
     //Adding Tiles
     tileList.add( new Tile(tileX, tileY));
     //Aligning Tiles
-    tileX += TILESIZE;
-    if (width + TILESIZE <= tileX) {
-      tileY += TILESIZE;
-      tileX = TILESIZE/2;
+    tileX += TS;
+    if (width + TS <= tileX) {
+      tileY += TS;
+      tileX = TS/2;
     }
   }
+
+  //Snake
+  mySnake = new Snake();
+  
+  //Cherry
+  myCherry = new Cherry();
 }// -----------------------------------------------------------------------------------------
 
 void draw() {
