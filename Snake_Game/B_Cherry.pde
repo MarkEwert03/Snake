@@ -1,8 +1,7 @@
 class Cherry {
-   //1. Instance Variables
+  //1. Instance Variables
   int x, y, s;
-  float hue;
-  PVector location;
+  int hue;
 
   //2. Constructor(s)
   Cherry() {
@@ -17,5 +16,9 @@ class Cherry {
     noStroke();
     fill(color(hue, 750, 750));
     ellipse(x, y, s, s);
+    
+    fill(white);
+    textSize(10);
+    text(hue, x, y);
   }// -----------------------------------------------------------------------------------------
 }

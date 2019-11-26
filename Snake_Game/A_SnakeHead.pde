@@ -19,9 +19,16 @@ class SnakeHead extends SnakePart {
   //3. Behavior functions
 
   void show() {
+    //Body
     noStroke();
     fill(c);
     rect(location.x, location.y, s, s, tl, tr, br, bl);
+    //Eyes
+    fill(black);
+    ellipse(location.x+TS/5, location.y+TS/5, TS/5, TS/5);
+    ellipse(location.x+TS/5, location.y-TS/5, TS/5, TS/5);
+    
+    //Showing Hue
     fill(white);
     textSize(10);
     text(hue, location.x, location.y);

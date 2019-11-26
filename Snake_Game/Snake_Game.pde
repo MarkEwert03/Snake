@@ -28,14 +28,19 @@ color white           = #ffffff;
 
 //Tiles
 ArrayList<Tile> tileList;
-final int TS = 30;
+
+//--
+//Main variable that changes the sizes of everything, framerate, and other things too
+int TS = 90; 
+//--
 float numberOfTiles;
 
 //Snake
 Snake mySnake;
 final int FRAME = 5;
-final float ROUNDNESS = TS/5;
+final int ROUNDNESS = TS;
 
+//Cherry
 Cherry myCherry;
 
 // ------------------------------------------------------------------------------------------
@@ -43,14 +48,14 @@ void setup() {
   //Basic
   fullScreen(); // Dimentions: x = 1440, y = 900
   numberOfTiles = (width/TS)*(height/TS);
-  print(numberOfTiles);
-  frameRate(1350/TS);
+  frameRate(width/TS);
   mode = INTRO;
 
   //Shapes
   colorMode(HSB, 1000, 1000, 1000, 1000);
-  loseAlpha = 0;
   rectMode(CENTER);
+  noStroke();
+  loseAlpha = 0;
 
   //Text
   textAlign(CENTER, CENTER);

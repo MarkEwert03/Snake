@@ -1,6 +1,7 @@
 class Snake {
   //1. Instance Variables
   int deathTimer = 1, index;
+  final int CC = 5;
   SnakeHead head;
   ArrayList<SnakePart> partList;
 
@@ -13,17 +14,23 @@ class Snake {
   void show() {
     //Head
     head.show();
-    
+
     //Part
     for (int i = 0; i < partList.size(); i++) {
       SnakePart tempPart = partList.get(i);
       tempPart.show();
-      tempPart.hue = 1000-4*int(map(i, 0, numberOfTiles, 0, 1000));
-      if (dist(tempPart.location.x, tempPart.location.y, myCherry.x, myCherry.y) < 1) {
+      //Changes color
+      if (i < 1000/CC) {
+        tempPart.hue = 1000-CC*int(map(i, 0, numberOfTiles, 0, 1000));
+      } else tempPart.hue = 2000-CC*int(map(i, 0, numberOfTiles, 0, 1000));
+      
+      //Moves Cherry
+      while (dist(tempPart.location.x, tempPart.location.y, myCherry.x, myCherry.y) < 1) {
         myCherry.hue = tempPart.hue;
         myCherry.x = (int(random(0, width/TS)) * TS) + TS/2;
         myCherry.y = (int(random(0, height/TS)) * TS) + TS/2;
       }
+      
     }
   }//-----------------------------------------------------------------------
 
