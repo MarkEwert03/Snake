@@ -12,7 +12,7 @@ void pause() {
   myCherry.show();
 
   //Transparent tint
-  fill(blue, 125);
+  fill(blue, 250);
   rect(width/2, height/2, width, height);
   
 }// -----------------------------------------------------------------------------------------

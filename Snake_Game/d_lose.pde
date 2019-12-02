@@ -22,7 +22,7 @@ void lose() {
   textSize(240);
   if (mySnake.index == 0) {
     fill(white);
-    if (loseAlpha <= 1000) loseAlpha += 1370/TS;
+    if (loseAlpha <= 1000) loseAlpha += 15;
     else text("YOU LOSE", width/2, height/2);
   }
 }// -----------------------------------------------------------------------------------------

@@ -3,6 +3,7 @@ class SnakeHead extends SnakePart {
   int speed, dir;
   PVector direction;
   float tl, tr, bl, br;
+  float eye1X, eye1Y, eye2X, eye2Y = -100;
 
   //2. Constructor(s)
   SnakeHead() {
@@ -13,7 +14,11 @@ class SnakeHead extends SnakePart {
     tr = 0;
     br = 0;
     bl = 0;
-    c = red;
+    eye1X = -10;
+    eye1Y = -10;
+    eye2X = -10;
+    eye2Y = -10;
+    c = green;
   }//-----------------------------------------------------------------------
 
   //3. Behavior functions
@@ -23,44 +28,74 @@ class SnakeHead extends SnakePart {
     noStroke();
     fill(c);
     rect(location.x, location.y, s, s, tl, tr, br, bl);
-    //Eyes
-    fill(black);
-    ellipse(location.x+TS/5, location.y+TS/5, TS/5, TS/5);
-    ellipse(location.x+TS/5, location.y-TS/5, TS/5, TS/5);
-    
-    //Showing Hue
-    fill(white);
-    textSize(10);
-    text(hue, location.x, location.y);
+
+    //RightEye
+    fill(darkGreen);
+    ellipse(eye1X, eye1Y, TS/5, TS/5);
+
+    //LeftEye
+    ellipse(eye2X, eye2Y, TS/5, TS/5);
   }
 
   void act() {
     if (dir == UP) {
+      //Smooths certain corners
       tr = ROUNDNESS;
       tl = ROUNDNESS;
       br = 0;
       bl = 0;
-      direction.set( 0, -1);
+
+      //Eyes
+      eye1X = location.x+TS/4;
+      eye1Y = location.y-TS*1.25;
+      eye2X = location.x-TS/4;
+      eye2Y = location.y-TS*1.25;
+
+      direction.set(0, -1);
     }
     if (dir == LEFT) {
+      //Smooths certain corners
       tr = 0;
       tl = ROUNDNESS;
       br = 0;
       bl = ROUNDNESS;
+
+      //Eyes
+      eye1X = location.x-TS*1.25;
+      eye1Y = location.y-TS/4;
+      eye2X = location.x-TS*1.25;
+      eye2Y = location.y+TS/4;
+
       direction.set(-1, 0);
     }
     if (dir == DOWN) {
+      //Smooths certain corners
       tr = 0;
       tl = 0;
       br = ROUNDNESS;
       bl = ROUNDNESS;
+
+      //Eyes
+      eye1X = location.x-TS/4;
+      eye1Y = location.y+TS*1.25;
+      eye2X = location.x+TS/4;
+      eye2Y = location.y+TS*1.25;
+
       direction.set( 0, 1);
     }
     if (dir == RIGHT) {
+      //Smooths certain corners
       tr = ROUNDNESS;
       tl = 0;
       br = ROUNDNESS;
       bl = 0;
+
+      //Eyes
+      eye1X = location.x+TS*1.25;
+      eye1Y = location.y+TS/4;
+      eye2X = location.x+TS*1.25;
+      eye2Y = location.y-TS/4;
+
       direction.set( 1, 0);
     }
 

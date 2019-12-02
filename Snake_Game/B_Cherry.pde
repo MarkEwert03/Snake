@@ -13,12 +13,6 @@ class Cherry {
 
   //3. Behavior functions
   void show() {
-    noStroke();
-    fill(color(hue, 750, 750));
-    ellipse(x, y, s, s);
-    
-    fill(white);
-    textSize(10);
-    text(hue, x, y);
+    image(cherryImage, x, y, s, s);
   }// -----------------------------------------------------------------------------------------
 }

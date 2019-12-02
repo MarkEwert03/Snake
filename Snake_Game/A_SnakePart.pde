@@ -7,10 +7,10 @@ class SnakePart {
 
   //2. Constructor(s)
   SnakePart(PVector _loc) {
-    s = TS*1.01;
+    s = TS*1.025;
     location = new PVector(_loc.x, _loc.y);
     c = lime;
-    hue = 1000;
+    hue = 300;
   }
 
   //3. Behavior functions
@@ -19,10 +19,5 @@ class SnakePart {
     noStroke();
     fill(color(hue, 750, 750));
     rect(location.x, location.y, s, s);
-    
-    //Alpha value
-    fill(white);
-    textSize(10);
-    text(hue, location.x, location.y);     
   }// -----------------------------------------------------------------------------------------
 }

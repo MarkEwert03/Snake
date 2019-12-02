@@ -10,10 +10,12 @@ final int LOSE  = 3;
 final int WIN   = 4;
 
 //Colours
+color darkRed         = #990000;
 color red             = #df2020;
 color orange          = #df8020;
 color yellow          = #dfdf20;
 color lime            = #80df20;
+color darkGreen       = #269900;
 color green           = #50df20;
 color mint            = #20df50;
 color cyan            = #20dfdf;
@@ -39,16 +41,17 @@ float numberOfTiles;
 Snake mySnake;
 final int FRAME = 5;
 final int ROUNDNESS = TS;
+PImage snakeEyeImage;
 
 //Cherry
 Cherry myCherry;
+PImage cherryImage;
 
 // ------------------------------------------------------------------------------------------
 void setup() {
   //Basic
   fullScreen(); // Dimentions: x = 1440, y = 900
   numberOfTiles = (width/TS)*(height/TS);
-  frameRate(width/TS);
   mode = INTRO;
 
   //Shapes
@@ -56,6 +59,11 @@ void setup() {
   rectMode(CENTER);
   noStroke();
   loseAlpha = 0;
+
+  //Images
+  imageMode(CENTER);
+  snakeEyeImage = loadImage("Snake Eye.png");
+  cherryImage = loadImage("Cherry.png");
 
   //Text
   textAlign(CENTER, CENTER);
@@ -77,8 +85,8 @@ void setup() {
   }
 
   //Snake
-  mySnake = new Snake();
-  
+  mySnake = new Snake();  
+
   //Cherry
   myCherry = new Cherry();
 }// -----------------------------------------------------------------------------------------
