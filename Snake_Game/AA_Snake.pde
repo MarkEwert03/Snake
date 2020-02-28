@@ -25,7 +25,7 @@ class Snake {
        if (tempPart.hue > 1000) tempPart.hue-= 1000;
 
       //Moves Cherry
-      while (dist(tempPart.location.x, tempPart.location.y, myCherry.x, myCherry.y) < 1) {
+      while (dist(tempPart.loc.x, tempPart.loc.y, myCherry.x, myCherry.y) < 1) {
         if (i == partList.size()-1) {
         }
         myCherry.x = (int(random(0, width/TS)) * TS) + TS/2;
@@ -40,13 +40,13 @@ class Snake {
   void act() {
     if (frameCount % FRAME == 0) {
       //"Moves" tail to front (index number which is zero, heads location)
-      partList.add( 0, new SnakePart(head.location) );
+      partList.add( 0, new SnakePart(head.loc) );
 
       //Head moves one tile
       head.act();
 
       //Removes tail (doesn't change length) if not touching cherry. If touching, then move cherry
-      if (dist(head.location.x, head.location.y, myCherry.x, myCherry.y) < 1) {
+      if (dist(head.loc.x, head.loc.y, myCherry.x, myCherry.y) < 1) {
         myCherry.x = (int(random(0, width/TS)) * TS) + TS/2;
         myCherry.y = (int(random(0, height/TS)) * TS) + TS/2;
       } else partList.remove(partList.size()-1);
@@ -54,12 +54,17 @@ class Snake {
       //Lose if head touches a snake part
       for (int i = 0; i < partList.size(); i++) {
         SnakePart tempPart = partList.get(i);
-        if (dist(head.location.x, head.location.y, tempPart.location.x, tempPart.location.y) < 1) {
+        if (dist(head.loc.x, head.loc.y, tempPart.loc.x, tempPart.loc.y) < 1) {
           mode = LOSE;
+          print("Touched part");
         }
       }
       index = partList.size();
     }
+  }//-----------------------------------------------------------------------
+  
+  void CPU(){
+    head.CPU();
   }//-----------------------------------------------------------------------
 
 

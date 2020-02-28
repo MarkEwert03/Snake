@@ -3,11 +3,14 @@
 
 //Mode Framework
 int mode;
-final int INTRO = 0;
-final int GAME  = 1;
-final int PAUSE = 2;
-final int LOSE  = 3;
-final int WIN   = 4;
+final int INTRO      = 0;
+final int onePlayer  = 1;
+final int twoPlayer  = 2;
+final int compPlayer = 3;
+final int PAUSE      = 4;
+final int LOSE       = 5;
+final int WIN        = 6;
+color pauseColor;
 
 //Colours
 color darkRed         = #990000;
@@ -95,30 +98,35 @@ void draw() {
   background(0);
 
   //Mode Framework
-  if      (mode == INTRO) intro();
-  else if (mode == GAME)  game();
-  else if (mode == PAUSE) pause();
-  else if (mode == LOSE)  lose();
-  else if (mode == WIN)   win();
+  if      (mode == INTRO)      intro();
+  else if (mode == onePlayer)  onePlayerGame();
+  else if (mode == twoPlayer)  twoPlayerGame();
+  else if (mode == compPlayer) compPlayerGame();
+  else if (mode == PAUSE)      pause();
+  else if (mode == LOSE)       lose();
+  else if (mode == WIN)        win();
   else println("Error! Mode was " + mode);
 }// -----------------------------------------------------------------------------------------
 
 void mousePressed() {
-  if      (mode == INTRO) introMousePressed();
-  else if (mode == GAME)  gameMousePressed();
-  else if (mode == PAUSE) pauseMousePressed();
-  else if (mode == LOSE)  loseMousePressed();
-  else if (mode == WIN)   winMousePressed();
+  if      (mode == INTRO)      introMousePressed();
+  else if (mode == onePlayer)  onePlayerGameMousePressed();
+  else if (mode == twoPlayer)  twoPlayerGameMousePressed();
+  else if (mode == compPlayer) compPlayerGameMousePressed();
+  else if (mode == PAUSE)      pauseMousePressed();
+  else if (mode == LOSE)       loseMousePressed();
+  else if (mode == WIN)        winMousePressed();
   else println("Error! Mode was " + mode);
 }// -----------------------------------------------------------------------------------------
 
 void keyPressed() {
-  if (key == 'w' || keyCode == UP )   mySnake.head.dir = UP;
-  if (key == 'a' || keyCode == LEFT)  mySnake.head.dir = LEFT;
-  if (key == 's' || keyCode == DOWN)  mySnake.head.dir = DOWN;
-  if (key == 'd' || keyCode == RIGHT) mySnake.head.dir = RIGHT;
+  if (key == 'w' || keyCode == UP )   mySnake.head.point = UP;
+  if (key == 'a' || keyCode == LEFT)  mySnake.head.point = LEFT;
+  if (key == 's' || keyCode == DOWN)  mySnake.head.point = DOWN;
+  if (key == 'd' || keyCode == RIGHT) mySnake.head.point = RIGHT;
+  if (key == 'i') mode = INTRO;
   if (key == ' ') {
-    if (mode == GAME) mode = PAUSE;
-    else if (mode == PAUSE) mode = GAME;
+    if (mode == onePlayer) mode = PAUSE;
+    else if (mode == PAUSE) mode = onePlayer;
   }
 }// -----------------------------------------------------------------------------------------

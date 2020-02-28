@@ -1,6 +1,6 @@
 class Cherry {
   //1. Instance Variables
-  int x, y, s;
+  float x, y, s;
   int hue;
 
   //2. Constructor(s)

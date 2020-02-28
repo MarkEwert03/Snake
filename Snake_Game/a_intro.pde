@@ -96,12 +96,12 @@ void intro() {
   text("AI", width*3/4, height/2);
 
   popMatrix();
-  
+
   pushMatrix();
   translate(0, -25);
 
   //Main Text
-  if (mouseX>width/2-width*3/10 && mouseY>height*5/6+25-height/8 && mouseX<width/2+width*3/10 && mouseY<height*5/6+25+height/8){
+  if (mouseX>width/2-width*3/10 && mouseY>height*5/6+25-height/8 && mouseX<width/2+width*3/10 && mouseY<height*5/6+25+height/8) {
     strokeWeight(15);
   } else {
     strokeWeight(10);
@@ -112,7 +112,7 @@ void intro() {
   rect(width/2, height*5/6+25, width*3/5, height/4);
   fill(white);
   text("Snake", width/2, height*5/6);
-  
+
   popMatrix();
 }// -----------------------------------------------------------------------------------------
 
@@ -123,19 +123,19 @@ void introMousePressed() {
   //Easy
   if (dist(mouseX, mouseY, width/4, height/6) < 250/2) {
     TS = 180;
-    frameRate(15);
+    frameRate(60);
     difficultyColor = yellow;
     difficulty = EASY;
     //Medium
   } else if (dist(mouseX, mouseY, width/2, height/6) < 250/2) {
     TS = 90;
-    frameRate(30);
+    frameRate(45);
     difficultyColor = orange;
     difficulty = MEDIUM;
     //Hard
   } else if (dist(mouseX, mouseY, width*3/4, height/6) < 250/2) {
     TS = 45;
-    frameRate(45);
+    frameRate(60);
     difficultyColor = red;
     difficulty = HARD;
     //P1
@@ -151,19 +151,25 @@ void introMousePressed() {
     gameModeColor = violet;
     gameMode = AI;
     //Starts game
-  } else if (mouseX>width/2-width*3/10 && mouseY>height*5/6+25-height/6 && mouseX<width/2+width*3/10 && mouseY<height*5/6+25+height/6){
+  } else if (mouseX>width/2-width*3/10 && mouseY>height*5/6+25-height/6 && mouseX<width/2+width*3/10 && mouseY<height*5/6+25+height/6) {
     if (difficulty == EASY) {
       TS = 180;
-      frameRate(15);
+      frameRate(45);
+      pauseColor = yellow;
     } else if (difficulty == MEDIUM) {
       TS = 90;
       frameRate(30);
+      pauseColor = orange;
     } else if (difficulty == HARD) {
       TS = 45;
-      frameRate(45);
+      frameRate(60);
+      pauseColor = red;
     }
+    //Loads in the tiles
     setup();
-    if (gameMode == P1) mode = GAME;
+    if (gameMode == P1)      mode = onePlayer;
+    else if (gameMode == P2) mode = twoPlayer;
+    else if (gameMode == AI) mode = compPlayer;
   }
 
   popMatrix();
