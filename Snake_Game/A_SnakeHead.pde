@@ -6,7 +6,7 @@ class SnakeHead extends SnakePart {
   float eye1X, eye1Y, eye2X, eye2Y = -100;
   float snakeCludge, rightTileX, bottomTileY;
   boolean top, bottom;
-  color snakeHeadColor;
+  color headColor;
 
   //2. Constructor(s)
   SnakeHead() {
@@ -45,10 +45,10 @@ class SnakeHead extends SnakePart {
 
   void show() {
     //Body
-    if (mode == onePlayer) snakeHeadColor = green;
-    else if (mode == twoPlayer) snakeHeadColor = mint;
-    else if (mode == compPlayer) snakeHeadColor = lime;
-    fill(snakeHeadColor);
+    if (mode == onePlayer) headColor = green;
+    else if (mode == twoPlayer) headColor = mint;
+    else if (mode == compPlayer) headColor = lime;
+    fill(headColor);
     noStroke();
     rect(loc.x, loc.y, s, s, tl, tr, br, bl);
 
@@ -131,8 +131,6 @@ class SnakeHead extends SnakePart {
     if (loc.x+snakeCludge < TS/2-5 || width-TS/2+5 < loc.x || loc.y < TS/2-5 || height-TS/2+50 < loc.y) {
       mode = LOSE;
     }
-
-    println(loc.x, loc.y);
   }// -----------------------------------------------------------------------------------------
 
   void CPU() {

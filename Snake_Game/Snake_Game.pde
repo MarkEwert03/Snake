@@ -37,7 +37,6 @@ ArrayList<Tile> tileList;
 //--
 //Main variable that changes the sizes of everything, framerate, and other things too
 int TS = 90; 
-//--
 float numberOfTiles;
 
 //Snake
@@ -50,6 +49,8 @@ PImage snakeEyeImage;
 Cherry myCherry;
 PImage cherryImage;
 
+//Other
+PImage winPic;
 // ------------------------------------------------------------------------------------------
 void setup() {
   //Basic
@@ -67,6 +68,7 @@ void setup() {
   imageMode(CENTER);
   snakeEyeImage = loadImage("Snake Eye.png");
   cherryImage = loadImage("Cherry.png");
+  winPic = loadImage("Gradient.png");
 
   //Text
   textAlign(CENTER, CENTER);

@@ -154,15 +154,18 @@ void introMousePressed() {
   } else if (mouseX>width/2-width*3/10 && mouseY>height*5/6+25-height/6 && mouseX<width/2+width*3/10 && mouseY<height*5/6+25+height/6) {
     if (difficulty == EASY) {
       TS = 180;
-      frameRate(45);
+      if (gameMode == P1) frameRate(15);
+      else if (gameMode == AI) frameRate(45);
       pauseColor = yellow;
     } else if (difficulty == MEDIUM) {
       TS = 90;
-      frameRate(30);
+      if (gameMode == P1) frameRate(30);
+      else if (gameMode == AI) frameRate(60);
       pauseColor = orange;
     } else if (difficulty == HARD) {
       TS = 45;
-      frameRate(60);
+      if (gameMode == P1) frameRate(45);
+      else if (gameMode == AI) frameRate(120);
       pauseColor = red;
     }
     //Loads in the tiles

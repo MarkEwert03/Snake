@@ -1,9 +1,10 @@
 class Snake {
   //1. Instance Variables
-  int deathTimer = 1, index;
+  int deathTimer = 1, index, finalLength;
   int CC;
   SnakeHead head;
   ArrayList<SnakePart> partList;
+  color lastPartColor;
 
   //2. Constructor(s)
   Snake() {
@@ -21,8 +22,8 @@ class Snake {
       tempPart.show();
 
       //Changes color
-       tempPart.hue = 300+CC*int(map(i, 0, numberOfTiles, 0, 1000));
-       if (tempPart.hue > 1000) tempPart.hue-= 1000;
+      tempPart.hue = 300+CC*int(map(i, 0, numberOfTiles, 0, 1000));
+      if (tempPart.hue > 1000) tempPart.hue-= 1000;
 
       //Moves Cherry
       while (dist(tempPart.loc.x, tempPart.loc.y, myCherry.x, myCherry.y) < 1) {
@@ -54,26 +55,31 @@ class Snake {
       //Lose if head touches a snake part
       for (int i = 0; i < partList.size(); i++) {
         SnakePart tempPart = partList.get(i);
+        if (i == partList.size()-1) lastPartColor = tempPart.partColor;
         if (dist(head.loc.x, head.loc.y, tempPart.loc.x, tempPart.loc.y) < 1) {
           mode = LOSE;
           print("Touched part");
         }
       }
       index = partList.size();
+      finalLength = index;
     }
+
+    //Win Condition
+    if (partList.size() == numberOfTiles-1) mode = WIN;
   }//-----------------------------------------------------------------------
-  
-  void CPU(){
+
+  void CPU() {
     head.CPU();
   }//-----------------------------------------------------------------------
 
 
-  void deathAnimation() {
+  void endAnimation() {
     deathTimer--;
     if (deathTimer < 0) {
       if (index != 0) {
         partList.remove(index-1);
-        deathTimer = 20/index;
+        deathTimer = 15/index;
         index--;
       }
     }

@@ -1,5 +1,4 @@
 int loseAlpha = 0;
-
 void lose() {
   //Tile
   for (int i = 0; i < tileList.size(); i++) {
@@ -12,9 +11,10 @@ void lose() {
 
   //Snake
   mySnake.show();
-  mySnake.deathAnimation();
+  mySnake.endAnimation();
+
   //Transparent tint
-  fill(orange, loseAlpha);
+  fill(mySnake.lastPartColor, loseAlpha);
   rect(width/2, height/2, width, height);
 
   //Death Animation
@@ -22,7 +22,12 @@ void lose() {
   if (mySnake.index == 0) {
     fill(white);
     if (loseAlpha <= 1000) loseAlpha += 15;
-    else text("YOU LOSE", width/2, height/2);
+    else {
+      textSize(240);
+      text("YOU LOSE", width/2, height/3);
+      textSize(120);
+      text("Your length was "+mySnake.finalLength, width/2, height*2/3);
+    }
   }
 }// -----------------------------------------------------------------------------------------
 

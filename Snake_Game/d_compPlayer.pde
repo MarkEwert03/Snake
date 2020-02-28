@@ -4,15 +4,14 @@ void compPlayerGame() {
     Tile tempTile = tileList.get(i);
     tempTile.show();
   }
-  
+
   //Snake
   mySnake.show();
   mySnake.act();
   mySnake.CPU();
-  
+
   //Cherry
   myCherry.show();
-  
 }
 
 void compPlayerGameMousePressed() {
